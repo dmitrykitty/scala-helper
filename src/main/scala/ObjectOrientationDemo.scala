@@ -168,7 +168,7 @@ package com.dnikitin
     //     void eat(Animal animal);
     // }
 
-    infix def eat(animal: Animal): Unit
+    infix def eat(animal: Animal): Unit //croc eat dog   // infix method call
   }
 
   trait Dangerous {
@@ -291,6 +291,7 @@ package com.dnikitin
   // 10. COMPANION CLASS AND COMPANION OBJECT
   // ============================================================
 
+  //class with private constructor to force creating objects using a companion class
   class User private (val name: String, val age: Int) {
     override def toString: String =
       s"User(name = $name, age = $age)"
@@ -366,9 +367,18 @@ package com.dnikitin
 
   def describePerson(person: Person): String =
     person match {
+      /*
+      Is this person a Person whose name is exactly "Bob"?
+      If yes, extract age into variable age.
+      Then check if age >= 18.
+       */
       case Person("Bob", age) if age >= 18 =>
         s"Adult Bob, age = $age"
 
+      /*
+      Extract name and age from Person.
+      Then check if age < 18.
+      */
       case Person(name, age) if age < 18 =>
         s"$name is underage"
 
@@ -422,9 +432,19 @@ package com.dnikitin
   // 14. OPTION INSTEAD OF NULL
   // ============================================================
 
-  def findUserName(id: Int): Option[String] =
+  def findUserName(id: Int): Option[String] = {
+    /*
+    Optional<String> findUserName(int id) {
+      if (id == 1) {
+          return Optional.of("Alice");
+      } else {
+          return Optional.empty();
+      }
+    }
+     */
     if (id == 1) Some("Alice")
     else None
+  }
 
   val maybeName = findUserName(1)
 

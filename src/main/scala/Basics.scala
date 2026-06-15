@@ -404,12 +404,27 @@ object Basics {
     val squares = for (n <- 1 to 5) yield n * n
     println(squares)
 
+    /*
+    Take numbers from 1 to 10,
+    keep only even numbers,
+    return their squares as a new collection.
+     */
     val evenSquares =
       for {
         n <- 1 to 10
         if n % 2 == 0
       } yield n * n
 
+    /*
+    the same as
+      val evenSquares =
+      (1 to 10)
+        .filter(n => n % 2 == 0)
+        .map(n => n * n)
+      or
+      val evenSquares =
+        for (n <- 1 to 10 if n % 2 == 0) yield n * n
+     */
     println(evenSquares)
 
     // ============================================================
@@ -427,10 +442,12 @@ object Basics {
     // Original list is unchanged.
     println(numbers)
 
-    val withZeroAtBeginning = 0 :: numbers
+    //create a new list with 0 added at the beginning. :: is called cons. It prepends one element to a list.
+    val withZeroAtBeginning = 0 :: numbers // numbers.::(0) - prepend
     println(withZeroAtBeginning)
 
-    val withSixAtEnd = numbers :+ 6
+    //create a new list with 6 added at the end.
+    val withSixAtEnd = numbers :+ 6 //append
     println(withSixAtEnd)
 
     // Java equivalent:
@@ -502,6 +519,12 @@ object Basics {
     // 15. FUNCTIONS AS VALUES
     // ============================================================
 
+    /*
+    plusOne is a function.
+    It takes one Int.
+    It returns one Int.
+    For input x, it returns x + 1.
+     */
     val plusOne: Int => Int = x => x + 1
 
     println(plusOne(10))
@@ -521,6 +544,7 @@ object Basics {
 
     println(applyFunction(10, plusOne))
     println(applyFunction(10, x => x * 3))
+    //x => x * 3
     println(applyFunction(10, _ * 3))
 
     // ============================================================
@@ -611,7 +635,12 @@ object Basics {
       list match {
         case Nil =>
           "empty list"
-
+          /*
+          A list with one element.
+          Take the first element and call it head.
+          After it, there is empty list Nil.
+          list equals to list with [ head elements, Nil ]
+           */
         case head :: Nil =>
           s"one element: $head"
 
