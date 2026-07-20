@@ -1,5 +1,5 @@
 package com.dnikitin
-package practice
+package com.dnikitin.practice
 
 import scala.annotation.tailrec
 import scala.math.abs

@@ -1,4 +1,5 @@
 package com.dnikitin
+package com.dnikitin
 
 @main def main(): Unit = {
 
